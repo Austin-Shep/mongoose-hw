@@ -4,10 +4,11 @@
     <div class="row">
         <div class="col s12">
             <h1 class="">NEWS WITHOUT THE FUSS</h1>
+            <button class="btn">Scrape the New York Times</button>
             {{#each article}}
             <div class="section">
                 <h5>
-                    <a href="{{this.link}}">{{this.title}}</a>
+                    <a href="article/{{this._id}}">{{this.title}}</a>
                 </h5>
                 <p>{{this.summary}}</p>
             </div>

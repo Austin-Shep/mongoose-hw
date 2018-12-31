@@ -6,8 +6,8 @@
 //URL-
 //thubmnail maybe?  
 //}
-// api route to post comments
-// api route to get the comments
+// api route to post comments-
+// api route to get the comments-
 // 
 var app = require("app");
 var axios = require("axios");
@@ -47,7 +47,7 @@ app.get("/", function (req, res) {
     });
 });
 //rendering the indv article on template
-app.get("article/:id", function (req, res) {
+app.get("/article/:id", function (req, res) {
     db.Article.findOne({
         where: {
             id: req.params.id
@@ -57,7 +57,7 @@ app.get("article/:id", function (req, res) {
     });
 });
 
-app.post("article/:id", function (req, res) {
+app.post("/article/:id", function (req, res) {
     db.Comments.save(req.body).then(
         function (comment) {
             return db.ArticlefindByIdAndUpdate(

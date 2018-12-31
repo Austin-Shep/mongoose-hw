@@ -1,0 +1,18 @@
+{{!-- need to create a button that scrapes, and then just dsiplay all the articles, with duttons to show the comments
+--}}
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h1 class="">NEWS WITHOUT THE FUSS</h1>
+            {{#each article}}
+            <div class="section">
+                <h5>
+                    <a href="{{this.link}}">{{this.title}}</a>
+                </h5>
+                <p>{{this.summary}}</p>
+            </div>
+            <div class="divider"></div>
+            {{/each}}
+        </div>
+    </div>
+</div>

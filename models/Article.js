@@ -13,6 +13,16 @@ var ArticleSchema = new Schema({
         required: true
     },
 
+    summary: {
+        type: String,
+        required: true
+    },
+    
+    postedOn: { 
+        type: Date, 
+        default: Date.now
+    },
+
     comment: {
         type: Schema.Types.ObjectId,
         ref: "Comments"

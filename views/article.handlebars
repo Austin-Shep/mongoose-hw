@@ -2,17 +2,16 @@
 <div class="container">
     <div class="row">
         <div class="col m12">
-            <h2>
-                <a href="{{article.link}}">
-                    {{article.title}}
-                </a>
+            <h2 id="artitle" data-id="{{article._id}}">
+                <a href="{{article.link}}"></a>
+                {{article.title}}
             </h2>
-            <img src="{{article.img}}" alt="thumbnail">
             <p class="blockquote">{{article.summary}}</p>
         </div>
     </div>
     <div class="row">
         <div class="col m12">
+            <h4>Comments</h4>
             {{#each article.comment}}
             <div class="section">
                 <h5>{{this.poster}}</h5>
@@ -38,9 +37,28 @@
                         <label for="comment">Comment Here</label>
                     </div>
                 </div>
-                <button type="submit" class="btn">Submit</button>
+                <button type="submit" class="btn" id="submit">Submit</button>
             </form>
-            {{!-- comment form box --}}
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $("#submit").on("click", function (event) {
+        event.preventDefault
+        var comment
+        var id = $("h2#artitle").data("id")
+
+        $.ajax({
+            method: "POST",
+            URL: `/article/${id}`,
+            data: {
+                poster: $("#username").val().trim(),
+                body: $("#comment").val().trim(),
+                title: $("#title").val().trim(),
+            }
+        }).then(function () {
+            location.reload
+        })
+
+    })
+</script>
